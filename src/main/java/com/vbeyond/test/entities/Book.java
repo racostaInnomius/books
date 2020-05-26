@@ -11,6 +11,8 @@ import javax.persistence.Table;
 
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import io.swagger.annotations.ApiModelProperty;
+
 @Entity
 @Table(name="BOOKS")
 @EntityListeners(AuditingEntityListener.class)
@@ -20,15 +22,19 @@ public class Book {
 	@Id
 	@Column(name="ID")
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "id")
+	@ApiModelProperty(notes = "Id of the Book", name="id", required=true, value="1")
 	private Long id;
 	
 	@Column(name="TITLE")
+	@ApiModelProperty(notes = "Title of the Book", name="title", required=true, value="Book Name")
 	private String title;
 	
 	@Column(name="AUTHOR")
+	@ApiModelProperty(notes = "Name of the Author", name="author", required=true, value="Author's name")
 	private String author;
 	
 	@Column(name="COVER")
+	@ApiModelProperty(notes = "URL Cover Image", name="cover", required=true, value="http://www.image.com/image.jpg")
 	private String cover;
 
 	public Long getId() {
