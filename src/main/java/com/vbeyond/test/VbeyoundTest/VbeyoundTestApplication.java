@@ -7,7 +7,10 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
 @SpringBootApplication
+@EnableSwagger2
 @EnableJpaAuditing
 @EnableJpaRepositories("com.vbeyond.test.repository")
 @EntityScan(basePackages 	= { "com.vbeyond.test.entities" })

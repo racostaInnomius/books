@@ -16,9 +16,12 @@ import com.vbeyond.test.entities.Book;
 import com.vbeyond.test.exception.ResourceNotFoundException;
 import com.vbeyond.test.repository.BooksRepository;
 
+import io.swagger.annotations.Api;
+
 @CrossOrigin("*")
 @RestController
 @RequestMapping("/api")
+@Api(value="Book Management System", description="Operations pertaining to book in Book Management System")
 public class BooksController {
 	
 	@Autowired
