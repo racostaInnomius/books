@@ -17,6 +17,9 @@ import com.vbeyond.test.exception.ResourceNotFoundException;
 import com.vbeyond.test.repository.BooksRepository;
 
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 
 @CrossOrigin("*")
 @RestController
@@ -28,18 +31,21 @@ public class BooksController {
 	BooksRepository booksrepository;
 	
 	// Get All Books
+	@ApiOperation(value = "View a list of available books", response = List.class)
 	@GetMapping("/books")
 	public List<Book> getAllNotes() {
 	    return booksrepository.findAll();
 	}
 
 	// Create a new Book
+	@ApiOperation(value = "Create a new book register", response = Book.class)
 	@PostMapping("/book")
-	public Book createNote(@RequestBody Book employee) {
-	    return booksrepository.save(employee);
+	public Book createNote(@RequestBody Book book) {
+	    return booksrepository.save(book);
 	}
 	
 	// Get a Single Book
+	@ApiOperation(value = "Retrieve a single book by id", response = Book.class)
 	@GetMapping("/book/{id}")
 	public Book getNoteById(@PathVariable(value = "id") Long noteId) {
 	    return booksrepository.findById(noteId)
@@ -47,6 +53,7 @@ public class BooksController {
 	}
 	
 	// Get a Single by title
+	@ApiOperation(value = "Retrieve a single book by title", response = Book.class)
 	@GetMapping("/book/title/{title}")
 	public Book getEmplyeeByName(@PathVariable(value = "title") String title) {
 	    return (Book) booksrepository.findByTitle(title)
@@ -54,6 +61,7 @@ public class BooksController {
 	}
 	
 	// Update a book
+	@ApiOperation(value = "Update a single book with an id", response = Book.class)
 	@PutMapping("/book/{id}")
 	public Book updateNote(@PathVariable(value = "id") Long id, @RequestBody Book bookDetails) {
 		Book book = booksrepository.findById(id)
